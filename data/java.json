@@ -1,0 +1,10 @@
+[
+    {
+        "name": "cheat-sheets",
+        "description": "",
+        "url": "http://www.cheat-sheets.org/saved-copy/%s.pdf",
+        "data": [
+            {"content": "java:cheat-sheets:designpatternscard1", "description": "Design patterns"}
+        ]
+    }
+]

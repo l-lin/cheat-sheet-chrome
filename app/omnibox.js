@@ -1,4 +1,4 @@
-(function (chrome, _) {
+(function(chrome, _) {
     'use strict';
 
     chrome.omnibox.onInputChanged.addListener(omniboxInputChanged);
@@ -22,25 +22,24 @@
             var sourceAndText = text.substring(sepIndex + 1, text.length);
             var sources = JSON.parse(localStorage.getItem('cheat-sheet-' + type));
             sepIndex = sourceAndText.indexOf(':');
+            var source;
             if (sepIndex >= 0) {
+                // Fetch the source from the second argument
                 var sourceCode = sourceAndText.substring(0, sepIndex);
                 var textToSearch = sourceAndText.substring(sepIndex + 1, sourceAndText.length);
-                var source = _.find(sources, function(source) {
+                source = _.find(sources, function(source) {
                     return source.name === sourceCode;
                 });
-                var url = window.resultConverters.append2url(source.url, textToSearch);
-                chrome.tabs.create({
-                    url: url
-                });
             } else {
-                var defaultSource = _.find(sources, function (source) {
+                // Take the default source if there are no second argument
+                source = _.find(sources, function(source) {
                     return source.default;
                 });
-                var url = window.resultConverters.append2url(defaultSource.url, sourceAndText);
-                chrome.tabs.create({
-                    url: url
-                });
             }
+
+            chrome.tabs.update({
+                url: window.resultConverters.append2url(source.url, textToSearch)
+            });
         }
     }
 
@@ -63,7 +62,7 @@
     function _filter(list, text) {
         if (list && list.length > 0) {
             var listJson = JSON.parse(list);
-            return _.filter(listJson, function (item) {
+            return _.filter(listJson, function(item) {
                 if (text) {
                     return item.description.toLowerCase().indexOf(text.toLowerCase()) >= 0;
                 }

@@ -1,0 +1,16 @@
+[
+    {
+        "default": true,
+        "name:": "personal",
+        "description": "Personal cheat sheet",
+        "url": "https://github.com/l-lin/dotfiles/blob/master/.vim/doc/cheat_sheet.txt"
+    },
+    {
+        "name": "cheat-sheets",
+        "description": "External cheat sheets",
+        "url": "http://www.cheat-sheets.org/saved-copy/%s.png",
+        "data": [
+            {"content": "vim:cheat-sheets:vim-cheatsheet", "description": "Vim cheat sheet in image"}
+        ]
+    }
+]

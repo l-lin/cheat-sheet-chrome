@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                 options: {
                     open: false,
                     base: [
-                        '<%= config.app %>'
+                        ''
                     ]
                 }
             },
@@ -293,7 +293,7 @@ module.exports = function(grunt) {
         },
         jsbeautifier: {
             default: {
-                src: ['<%= config.app %>/scripts/**/*.js', 'Gruntfile.js']
+                src: ['<%= config.app %>/**/*.js', 'Gruntfile.js']
             }
         }
     });

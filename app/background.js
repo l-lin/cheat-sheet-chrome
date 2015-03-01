@@ -1,6 +1,9 @@
 (function(chrome, _, Q) {
     'use strict';
 
+    var PROVIDER_URL = 'https://raw.githubusercontent.com/l-lin/cheat-sheet-chrome/master';
+    //var PROVIDER_URL = 'http://localhost:9000';
+
     chrome.alarms.create({
         periodInMinutes: 60
     });
@@ -11,21 +14,23 @@
     function update() {
         localStorage.clear();
 
-        xhr('GET', 'https://raw.githubusercontent.com/l-lin/cheat-sheet-chrome/master/data/types.json')
-            .then(function (response) {
+        xhr('GET', PROVIDER_URL + '/data/types.json')
+            .then(function(response) {
                 if (response.status >= 400) {
-                    return Q.fcall(function() {return [];});
+                    return Q.fcall(function() {
+                        return [];
+                    });
                 }
                 localStorage.setItem('cheat-sheet-types', response.responseText);
                 var types = JSON.parse(response.responseText);
                 var promises = [];
-                types.forEach(function (type) {
+                types.forEach(function(type) {
                     promises.push(_fetchType(type.content.replace(':', '')));
                 });
                 return Q.all(promises);
             })
-            .then(function (responses) {
-                responses.forEach(function (response) {
+            .then(function(responses) {
+                responses.forEach(function(response) {
                     updateType(response.type, response.responseText, response.status);
                 });
             });
@@ -39,14 +44,14 @@
         var results = JSON.parse(responseText);
         if (results && results.length > 0) {
             var promises = [];
-            results.forEach(function (result) {
+            results.forEach(function(result) {
                 if (!result.default) {
                     promises.push(_fetchResults(type, result));
                 }
             });
 
-            Q.all(promises).then(function (resultsList) {
-                resultsList.forEach(function (results) {
+            Q.all(promises).then(function(resultsList) {
+                resultsList.forEach(function(results) {
                     updateResult(type, results);
                 });
             });
@@ -56,7 +61,7 @@
     function updateResult(type, results) {
         var storedResult = JSON.parse(localStorage.getItem('cheat-sheet-' + type + '-results')) || [];
         if (results) {
-            results.forEach(function (data) {
+            results.forEach(function(data) {
                 if (!_.find(storedResult, data)) {
                     storedResult.push(data);
                 }
@@ -70,7 +75,10 @@
         var defer = Q.defer();
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
-                defer.resolve({responseText: xhr.responseText, status: xhr.status});
+                defer.resolve({
+                    responseText: xhr.responseText,
+                    status: xhr.status
+                });
             }
         };
         xhr.open(method, url);
@@ -80,9 +88,9 @@
 
     function _fetchType(type) {
         var defer = Q.defer();
-        var url = 'https://raw.githubusercontent.com/l-lin/cheat-sheet-chrome/master/data/' + type + '.json';
+        var url = PROVIDER_URL + '/data/' + type + '.json';
         xhr('GET', url)
-            .then(function (response) {
+            .then(function(response) {
                 if (response.status >= 400) {
                     defer.reject('Status of ' + url + ' is ' + response.status);
                 } else {
@@ -96,7 +104,7 @@
     function _fetchResults(type, result) {
         var defer = Q.defer();
         if (result.dataUrl) {
-            xhr('GET', result.dataUrl).then(function (response) {
+            xhr('GET', result.dataUrl).then(function(response) {
                 if (response.status >= 400) {
                     defer.reject('Status of ' + result.dataUrl + ' is ' + response.status);
                 } else {

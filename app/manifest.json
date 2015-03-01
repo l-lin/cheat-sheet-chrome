@@ -12,7 +12,7 @@
         "scripts": [
             "vendor/underscore.min.js",
             "vendor/q.js",
-            "vendor/sprintf.js",
+            "vendor/sprintf.min.js",
             "dataParsers.js",
             "resultConverters.js",
             "omnibox.js",
@@ -25,6 +25,7 @@
     "permissions": [
         "alarms",
         "tabs",
+        "http://localhost:9000/**/*",
         "https://github.io/**/*",
         "https://github.com/**/*",
         "https://rawgithub.com/**/*",

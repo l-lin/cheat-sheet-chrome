@@ -2,5 +2,13 @@
     {
         "content": "golang:",
         "description": "Golang"
+    },
+    {
+        "content": "vim:",
+        "description": "Vim"
+    },
+    {
+        "content": "java:",
+        "description": "Java"
     }
 ]
