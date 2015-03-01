@@ -1,10 +1,10 @@
-window.resultConverters = (function() {
+window.resultConverters = (function(sprintf) {
     'use strict';
     return {
         append2url: append2url
     };
 
     function append2url(url, search) {
-        return url + search;
+        return sprintf(url, search);
     }
-})();
+})(sprintf);

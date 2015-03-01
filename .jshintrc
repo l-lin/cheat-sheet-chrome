@@ -20,10 +20,9 @@
     "smarttabs": true,
     "latedef": "nofunc",
     "globals": {
-        "chrome": true,
-        "angular": false,
-        "jQuery": false,
-        "$": false,
-        "DataTable": false
+        "chrome": false,
+        "_": false,
+        "window": false,
+        "sprintf": false
     }
 }

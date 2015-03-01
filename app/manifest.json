@@ -11,6 +11,8 @@
     "background": {
         "scripts": [
             "vendor/underscore.min.js",
+            "vendor/q.js",
+            "vendor/sprintf.js",
             "dataParsers.js",
             "resultConverters.js",
             "omnibox.js",
