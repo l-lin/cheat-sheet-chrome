@@ -1,0 +1,33 @@
+{
+    "name": "Cheat sheet",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "To use, type 'cs' plus a search term into the Omnibox.",
+    "homepage_url": "https://github.com/l-lin/cheat-sheet-chrome",
+    "icons": {
+        "16": "images/icon-16.png",
+        "128": "images/icon-128.png"
+    },
+    "background": {
+        "scripts": [
+            "vendor/underscore.min.js",
+            "dataParsers.js",
+            "resultConverters.js",
+            "omnibox.js",
+            "background.js"
+        ]
+    },
+    "omnibox": {
+        "keyword": "cs"
+    },
+    "permissions": [
+        "alarms",
+        "tabs",
+        "https://github.io/**/*",
+        "https://github.com/**/*",
+        "https://rawgithub.com/**/*",
+        "https://raw.githubusercontent.com/**/*",
+        "https://render.githubusercontent.com/**/*",
+        "https://api.github.com/**/*"
+    ]
+}
