@@ -23,14 +23,16 @@
             var sources = JSON.parse(localStorage.getItem('cheat-sheet-' + type));
             sepIndex = sourceAndText.indexOf(':');
             var source;
+            var textToSearch;
             if (sepIndex >= 0) {
                 // Fetch the source from the second argument
                 var sourceCode = sourceAndText.substring(0, sepIndex);
-                var textToSearch = sourceAndText.substring(sepIndex + 1, sourceAndText.length);
+                textToSearch = sourceAndText.substring(sepIndex + 1, sourceAndText.length);
                 source = _.find(sources, function(source) {
                     return source.name === sourceCode;
                 });
             } else {
+                textToSearch = sourceAndText;
                 // Take the default source if there are no second argument
                 source = _.find(sources, function(source) {
                     return source.default;
