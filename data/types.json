@@ -10,5 +10,9 @@
     {
         "content": "java:",
         "description": "Java"
+    },
+    {
+        "content": "sql:",
+        "description": "SQL"
     }
 ]
