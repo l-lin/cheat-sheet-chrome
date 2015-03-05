@@ -1,7 +1,7 @@
 [{
     "name": "usetheindexluke",
     "description": "Use the index Luke",
-    "url": "%s",
+    "url": "http://use-the-index-luke.com/fr/sql/%s",
     "data": [
         {"content": "sql:usetheindexluke:anatomie-dun-index", "description": "Anatomie d'un index"},
         {"content": "sql:usetheindexluke:anatomie-dun-index/les-noeuds-feuilles", "description": "Les noeuds feuilles"},
