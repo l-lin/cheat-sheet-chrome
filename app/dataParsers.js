@@ -24,10 +24,12 @@ window.dataParsers = (function() {
         var data = [];
         if (list && list.length > 0) {
             list.forEach(function(item) {
-                data.push({
-                    content: type + ':' + source.name + ':' + item.name,
-                    description: source.description + ' - ' + item.name
-                });
+                if (item && item.type === 'dir') {
+                    data.push({
+                        content: type + ':' + source.name + ':' + item.name,
+                        description: source.description + ' - ' + item.name
+                    });
+                }
             });
         }
         return data;

@@ -1,6 +1,6 @@
 {
     "name": "Cheat sheet",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "manifest_version": 2,
     "description": "To use, type 'cs' plus a search term into the Omnibox.",
     "homepage_url": "https://github.com/l-lin/cheat-sheet-chrome",

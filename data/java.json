@@ -6,5 +6,12 @@
         "data": [
             {"content": "java:cheat-sheets:designpatternscard1", "description": "Design patterns"}
         ]
+    },
+    {
+        "name": "designpatterns",
+        "description": "Design patterns",
+        "url": "https://github.com/iluwatar/java-design-patterns#%s",
+        "dataUrl": "https://api.github.com/repos/iluwatar/java-design-patterns/contents/",
+        "dataParser": "github"
     }
 ]
